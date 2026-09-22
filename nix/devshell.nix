@@ -1,0 +1,82 @@
+{ pkgs, perSystem, ... }:
+perSystem.devshell.mkShell {
+    name = "<HW_ASSIGNMENT> devshell";
+    motd = ''
+        {141}📚 <HW_ASSIGNMENT>{reset} devshell
+        $(type -p menu &>/dev/null && menu)
+    '';
+
+    commands = [
+        # helpers
+        ## python
+        {
+            name = "pyr";
+            category = "[python]";
+            help = "run";
+            command = "python ./submission.py $@";
+        }
+        {
+            name = "pyl";
+            category = "[python]";
+            help = "lsp";
+            # command = "ty check --python '$(which python3)' src $@";
+            command = "uvx ruff check --watch src $@";
+        }
+        ## typst
+        {
+            name = "typ";
+            category = "[typst]";
+            help = "preview";
+            command = "tinymist preview reports/main.typ --root=.";
+        }
+        {
+            name = "tyl";
+            category = "[typst]";
+            help = "lsp";
+            command = "tinymist test --no-dashboard --ignore-system-fonts --watch reports/main.typ --root=.";
+        }
+        {
+            name = "tyc";
+            category = "[typst]";
+            help = "compile";
+            # command = "nix run .#report";
+            command = "tinymist compile reports/main.typ --root=.";
+        }
+    ];
+
+    packages = with pkgs; [
+        # python
+        # WARN: python3 is overriden to unstable as python3Packages.cartopy is broken on release-26.05
+        # https://github.com/NixOS/nixpkgs/issues/516636
+        (perSystem.nixpkgs-unstable.python3.withPackages (
+            ps: with ps; [
+                # python packages here
+                pandas
+                matplotlib
+                numpy
+                scipy
+                cartopy
+            ]
+        ))
+        uv
+        ty
+
+        # typst
+        tinymist
+        hayagriva
+    ];
+
+    env = [
+        {
+            name = "TYPST_FONT_PATHS";
+            prefix =
+                with pkgs;
+                lib.makeSearchPath "share/fonts/opentype" [
+                    newcomputermodern
+                    tex-gyre.cursor
+                    tex-gyre.termes
+                    nerd-fonts.iosevka-term
+                ];
+        }
+    ];
+}
