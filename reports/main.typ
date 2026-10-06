@@ -39,10 +39,20 @@
     course-id: "Course: Description",
     instructor: "Instructor",
     semester: "Fall 2026",
-    due-time: "January 01st. at 23:59",
+    due-time: datetime(
+        // due date
+        year: 2026,
+        month: 01,
+        day: 01,
+
+        // due time
+        hour: 23,
+        minute: 59,
+        second: 00,
+    ).display("[month repr:long] [day padding:zero], [year] at [hour repr:24]:[minute padding:zero]:[second padding:zero]"),
 
     // (defaults to A4)
-    paper-size: "us-letter", 
+    paper-size: "us-letter",
 )
 
 // document settings
