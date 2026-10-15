@@ -1,13 +1,14 @@
-import numpy as np
-import matplotlib.pyplot as plt
 import os
 
+import matplotlib.pyplot as plt
+import numpy as np
 
-def heading(problem):
+
+def heading(problem: str) -> None:
     print(f"\n------\n {problem}\n------")
 
 
-def main():
+def main() -> None:
     #########
     # p02 #
     #########
@@ -26,6 +27,7 @@ def main():
     save_path = os.path.join(os.path.dirname(__file__), "./outputs/figures/s02.png")
     plt.savefig(save_path)
     plt.show()
+
 
 if __name__ == "__main__":
     main()
