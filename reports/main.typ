@@ -49,7 +49,9 @@
         hour: 23,
         minute: 59,
         second: 00,
-    ).display("[month repr:long] [day padding:zero], [year] at [hour repr:24]:[minute padding:zero]:[second padding:zero]"),
+    ).display(
+        "[month repr:long] [day padding:zero], [year] at [hour repr:24]:[minute padding:zero]:[second padding:zero]",
+    ),
 
     // (defaults to A4)
     paper-size: "us-letter",
@@ -92,7 +94,7 @@
 
 #figure(
     image("../outputs/figures/s02.png", width: 65%),
-    caption: [Sine Wave on $x = [0 10]$]
+    caption: [Sine Wave on $x = [0 10]$],
 ) <fig:s02>
 
 #raw(read("../outputs/text/s02.txt"), block: true) <code:s02>

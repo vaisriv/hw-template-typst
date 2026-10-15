@@ -19,8 +19,7 @@ perSystem.devshell.mkShell {
             name = "pyl";
             category = "[python]";
             help = "lsp";
-            # command = "ty check --python '$(which python3)' src $@";
-            command = "uvx ruff check --watch src $@";
+            command = "ty check -W src $@";
         }
         ## typst
         {
@@ -56,10 +55,12 @@ perSystem.devshell.mkShell {
                 numpy
                 scipy
                 cartopy
+
+                # dev packages
+                uv
+                ty
             ]
         ))
-        uv
-        ty
 
         # typst
         tinymist
