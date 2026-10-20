@@ -27,6 +27,10 @@
 #let vecrowOld = vecrow
 #let vecrow = vecrowOld.with(delim: "[")
 
+// custom units
+#add-unit("decibelIsotropic", "dBi", "upright(\"dBi\")", space: true)
+#add-unit("decibelWatt", "dBW", "upright(\"dBW\")", space: true)
+
 ////////////////////
 // Document Setup //
 ////////////////////
