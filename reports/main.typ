@@ -75,19 +75,17 @@
 ////////////////////////////
 
 #prob(title: [Parts #emph[(\# pts)]])[
-    1. Instructions
+    + Instructions #emph[(\# pts)]
     <hwk:p01a>
 
-    2. Instructions
+    + Instructions #emph[(\# pts)]
     <hwk:p01b>
 ] <hwk:p01>
 
-1. Answer
-
++ Answer
 <hwk:s01a>
 
-2. Answer
-
++ Answer
 <hwk:s01b>
 
 #pagebreak(weak: true)
