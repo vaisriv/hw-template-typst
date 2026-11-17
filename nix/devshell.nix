@@ -32,7 +32,14 @@ perSystem.devshell.mkShell {
             name = "tyl";
             category = "[typst]";
             help = "lsp";
-            command = "tinymist test --no-dashboard --ignore-system-fonts --watch reports/main.typ --root=.";
+            # command = "tinymist test --no-dashboard --ignore-system-fonts --watch reports/main.typ --root=.";
+            command =
+                # bash
+                ''
+                    p=$PWD
+                    cd /tmp
+                    tinymist test --no-dashboard --ignore-system-fonts --watch "$p/reports/main.typ" --root="$p"
+                '';
         }
         {
             name = "tyc";
